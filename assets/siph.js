@@ -11,16 +11,6 @@ Put Your Changes Into Master Branch
 2) git merge bryan
 */
 
-// Initialize Firebase
- var config = {
-    apiKey: "AIzaSyAeehb98nHo8rpAbkj6ztTsPWFCIkoShLU",
-    authDomain: "shouldiparkhere-44ecb.firebaseapp.com",
-    databaseURL: "https://shouldiparkhere-44ecb.firebaseio.com",
-    projectId: "shouldiparkhere-44ecb",
-    storageBucket: "shouldiparkhere-44ecb.appspot.com",
-    messagingSenderId: "971290106321"
-  };
-  firebase.initializeApp(config);
 
 
 //Should I Park Here
@@ -39,6 +29,23 @@ Put Your Changes Into Master Branch
 3) git thanks bryan for keeping your personal notes in
 */
 
+function closeLightbox(){
+  $(".lightbox").css('visibility', 'hidden');
+  $(".lightbox-content").css('visibility', 'hidden');
+}
+
+$(".lightbox").delay(200).fadeIn(1000);
+
+$( ".lightbox-btn" ).click(function() {
+  closeLightbox();
+});
+
+$(".locate-btn" ).click(function() {
+  $(".lightbox").css('visibility', 'visible');
+  $(".lightbox-content").css('visibility', 'visible');
+});
+
+
 // Initialize Firebase
  var config = {
    apiKey: "AIzaSyDSqVrrCzIDY3FydRzWwBVrTwFAXHo0imU",
@@ -56,7 +63,6 @@ Put Your Changes Into Master Branch
 var authKey1 = "privatekeyforspotcrimepublicusers-commercialuse-877.410.1607";
 var baseUrl = "https://api.spotcrime.com/crimes.json?lat=39.9525838&lon=-75.165222&radius=0.08&callback=jQuery21306930704791620661_1494546905160&key=privatekeyforspotcrimepublicusers-commercialuse-877.410.1607&_=1494546905164"
 
-
 function runQuery() {
 
   // The AJAX function uses the queryURL and GETS the JSON data associated with it.
@@ -67,11 +73,26 @@ function runQuery() {
     method: "GET",
     dataType:'jsonp'
   }).done(function(crimeStats) {
-    console.log(crimeStats.crimes)
+  	console.log(crimeStats.crimes);
+
+    $(".lightbox-content").empty();
+     $(".lightbox-content").html('Top Five Crimes in Area');
+    //Loop through type of crimes so the first five are displayed in Lightbox div after Submit button clicked
+    for(var i=0; i<5;i++){
+        var crimeType = crimeStats.crimes[i].type;
+        var crimeAddress = crimeStats.crimes[i].address;
+        console.log("Crime Type: " + crimeType + " " + "Crime Address: " + crimeAddress);
+        $(".lightbox-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
+    }
+    //Create button so user can start over
+    var newButton = $('<button class="lightbox-btn">New Location</button>');
+    newButton.click(function() {
+      closeLightbox();
+    });
+    $(".lightbox-content").append(newButton);
+
   });
 };
-
-runQuery();
 
 
 
@@ -92,21 +113,7 @@ function initMap() {
         });
 };
 
-/*$(".lightbox-content").empty();
-     $(".lightbox-content").html('Top Five Crimes in Area');
-    //Loop through type of crimes so the first five are displayed in Lightbox div after Submit button clicked
-    for(var i=0; i<5;i++){
-        var crimeType = crimeStats.crimes[i].type;
-        var crimeAddress = crimeStats.crimes[i].address;
-        console.log("Crime Type: " + crimeType + " " + "Crime Address: " + crimeAddress);
-        $(".lightbox-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
-    }
-    //Create button so user can start over
-    var newButton = $('<button class="lightbox-btn">New Location</button>');
-    newButton.click(function() {
-      closeLightbox();
-    });
-    $(".lightbox-content").append(newButton);*/
+
 
 
 
