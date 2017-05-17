@@ -1,0 +1,243 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	height: 100%;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* ============================= MY CODE ============================= */
+/* 
+#065D63 - dark green
+#7A918D - light green
+#C8EFDD - seafoam green
+#EFEBED - sand
+#89023E - burgundy
+#D9979C - pink
+#260B14 - licorice
+#FFFDF2 - ivory
+*/
+
+body#bod {
+	
+	/* background-image: url("cloudyday.png")!important; */
+	background-color: #260B14;
+	z-index: 1;
+}
+
+div.body-container {
+	
+	width: 100%;
+	height: 100%;
+	border-width: 1vw;
+	border-style: solid;
+	border-color: #065D63;
+	background-color: #7A918D;
+	padding: 2% 0% 2% 0%;
+
+	
+
+}
+
+div.stripe {
+
+	margin: 4% 0% 1% 0%;
+	padding: 1.9%;
+	background-color: #89023E;
+}
+
+div.map-container {
+
+	margin: 0% 5% 0% 5%;
+	border-radius: 17px;
+}
+
+/* to make the map make it bigger */ 
+div.map-container.fullscreen {
+	z-index: 9999; 
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+img.title-img {
+
+	width: 60%;
+	margin: 0% 20% 0% 20%;
+}
+
+h3.under-text {
+
+	text-align: center;
+	font-family: helvetica;
+	color: #EFEBED;
+	margin: 4% 0% 4% 0%;
+	font-size: 2.5vw;
+}
+
+img.temp-img {
+
+	margin: 0% 5% 0% 5%;
+	width: 90%;
+	border-radius: 14px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #89023E;
+}
+
+ #map {
+   width: 90%;
+   height: 400px;
+   background-color: grey;
+   align-content: middle;
+ }
+
+
+
+
+.lrg-center-text {
+
+	text-align: center;
+	font-family: helvetica;
+	font-size: 2.5vw;
+	color: #EFEBED;
+	margin: 3% 0% 3% 0%;
+}
+
+input.locate-btn {
+	
+	color: #FFFDF2;
+	background-color: #89023E;
+	margin:0%;
+	padding:12% 3% 12% 3%;
+	border-radius: 8px;
+	width: 100%;
+	height: 100%;
+	font-family: helvetica;
+	font-size: 2vw;
+}
+
+p.score-text {
+
+	color: #EFEBED;
+	font-family: helvetica;
+	text-align: center;
+	font-size: 8vw;
+	margin: 0% 2% 0% 2%
+}
+
+
+
+div.score-box {
+	background-color: #89023E;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 10px;
+	border-color: #FFFDF2;
+	width: 20%;
+	padding:2%;
+	margin: 1% 0% 1% 40%;
+}
+
+img.your-score-img {
+	
+	width: 40%;
+	margin: 7% 30% 2% 30%;
+}
+
+.lightbox {
+	background-color: black;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: rgba(0, 0, 0, .9);
+	text-align: center;
+}
+
+.lightbox-content {
+	visibility: visible;
+	font-family: helvetica;
+	color:white;
+	z-index: 1;
+	border-radius: 15px;
+	position: relative;
+	background-color: #7A918D;
+	margin: auto;
+	padding: 0;
+	width: 50%;
+	max-width: 1200px;
+	height: 300px;
+	top: 35%;
+}
+
+.lightbox-btn {
+	position: relative;
+	color: #FFFDF2;
+	padding: 0;
+	background-color: #89023E;
+	border-radius: 8px;
+	width: 200px;
+	height: 100px;
+	max-width: 1200px;
+	font-family: helvetica;
+	font-size: 2vw;
+	z-index:1;
+	margin: auto;
+}
+
+h1{
+	font-family: helvetica;
+	font-weight: bold;
+	font-size:20px;
+	padding:50px;
+}
+
+p{
+	font-family: helvetica;
+	color:white;
+	padding-top:15px;	
+}

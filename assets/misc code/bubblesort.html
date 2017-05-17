@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+    <head>
+    </head>
+
+    <body> 
+    <script>
+
+// =============== BUBBLE SORT FOR CRIME API ================ //
+
+    // fake city block values for crime. these can all be 1
+    // its not really relevant. this algorthim is mearuing the 
+    // amount of values in the array. this will represent the 
+    // number of crimes in the square block and sort them.
+
+    var array = [
+
+        [1],
+
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+
+        [1, 1, 1, 1, 1, 1, 1],
+
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+
+        [1, 1, 1],
+
+    ];
+
+    function bubbleSort(a) { 
+        var swapped;
+        do { 
+            swapped = false;
+
+            for (var i=0; i < array.length-1; i++) {
+
+                if (array[i].length > array[i+1].length) {
+                    var temp = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+     
+    bubbleSort(array);
+    console.log(array);
+
+    </script>
+    </body>
+</html>
