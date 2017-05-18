@@ -16,6 +16,8 @@
 	</head>
 
 	<body id="bod">
+	
+		
 
 		<div class="container body-container">
 			<div class="stripe">
@@ -23,52 +25,54 @@
 			</div><!-- END "light-stripe" -->
 
 			<h3 class="under-text"> A better way to park. </h3>
-
-
-
-			<div class="map-container" id="map">
-			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
-
-				<!-- MAP STUFF WILL GO HERE -->
-				<!-- <img class="temp-img" src="assets/images/maps-screenshot.png"> -->
-			</div><!-- END "map-container container" -->
-
 			
-			<!-- This is for the button -->
-			<div class="container">
-				<h2 class="lrg-center-text"> Press the button below to find your location! </h2>
-				<div class="col-xs-5"></div><!-- SPACER -->
-				<div class="col-xs-2">
-					<input class="locate-btn" type="button" value="Search">
-				</div>
-			</div><!-- END "container"-->
-				<div class="col-xs-5"></div><!-- SPACER -->
-			<div class="col-xs-12">
-				<img class="your-score-img" src="assets/images/ourratingfull.png">
-				<div class="score-box">
-					<p class="score-text" id="scoreValue"> 00 </p>
-				</div><!-- END "score-box" -->
-			</div><!-- END "col-xs-12" -->
+			<div id="map-content">
+				<div class="map-container" id="map">
+					<input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
 
-
-			<div class="lightbox">
-			<div class="lightbox-content">
-				<h1>Click to get started!</h1>
-				
-				<button class="lightbox-btn">Get Started!</button>
+						<!-- MAP STUFF WILL GO HERE -->
+						<!-- <img class="temp-img" src="assets/images/maps-screenshot.png"> -->
+				</div><!-- END "map-container container" -->
+				<!-- This is for the button -->
+				<div class="container">
+					<h2 class="lrg-center-text"> Press the button below to find your location! </h2>
+					<div class="col-xs-5"></div><!-- SPACER -->
+					<div class="col-xs-2">
+						<input class="locate-btn" type="button" value="See Rating"/>
+					</div>
+				</div><!-- END "container"-->
 			</div>
-		</div>
-			<div class="crime-text-box">
+			<div id="crime-container" class="col-xs-12" style="height:0px;visibility:hidden;">
+				<div>
+					<img class="your-score-img" src="assets/images/ourratingfull.png">
+					<div class="score-box">
+						<p class="score-text" id="scoreValue"> 00 </p>
+					</div><!-- END "score-box" -->
+				</div><!-- END "col-xs-12" -->
+				<div id="crime-content"></div>
+				<button class="newlocation-btn">New Location</button>
+			</div>
+			
+
+			<div class="crime-text-box"></div>
 			<!-- Load Jquery here -->
 			<!--</div>
 		</div> END "container title-container" -->
 
-		<div>
-		<h1 id="startLat">This is the start lat</h1>
 		</div>
-			<div>
-		<h1 id="startLon">This is the start lon</h1>
+		<div class="lightbox">
+			<div class="lightbox-content">
+				<h1>Please allow location before you start!</h1>
+				
+				<button class="lightbox-btn">Get Started!</button>
+			</div>
+		</div>
+		
+		<div>
+			<h1 id="startLat">This is the start lat</h1>
+		</div>
+		<div>
+			<h1 id="startLon">This is the start lon</h1>
 		</div>
 				
 

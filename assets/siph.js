@@ -41,8 +41,7 @@ $( ".lightbox-btn" ).click(function() {
 });
 
 $(".locate-btn" ).click(function() {
-  $(".lightbox").css('visibility', 'visible');
-  $(".lightbox-content").css('visibility', 'visible');
+  runQuery();
 });
 
 
@@ -68,33 +67,36 @@ function runQuery() {
   // The AJAX function uses the queryURL and GETS the JSON data associated with it.
   // The data then gets stored in the variable called: "NYTData"
 
+
   $.ajax({
     url: baseUrl,
     method: "GET",
     dataType:'jsonp'
   }).done(function(crimeStats) {
-  	console.log(crimeStats.crimes);
-
-    $(".lightbox-content").empty();
-     $(".lightbox-content").html('Top Five Crimes in Area');
+  $("#map-content").css('height', '0px');
+  $("#map-content").css('visibility', 'hidden');
+  $("#map-content").css('overflow', 'hidden');
+    $("#crime-content").html('<h2 class="lrg-center-text">Top Five Crimes in Area</h2>');
     //Loop through type of crimes so the first five are displayed in Lightbox div after Submit button clicked
     for(var i=0; i<5;i++){
         var crimeType = crimeStats.crimes[i].type;
         var crimeAddress = crimeStats.crimes[i].address;
         console.log("Crime Type: " + crimeType + " " + "Crime Address: " + crimeAddress);
-        $(".lightbox-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
+        $("#crime-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
     }
-    //Create button so user can start over
-    var newButton = $('<button class="lightbox-btn">New Location</button>');
-    newButton.click(function() {
-      closeLightbox();
-    });
-    $(".lightbox-content").append(newButton);
-
+  $("#crime-container").css('visibility', 'visible');
+  $("#crime-container").css('height', '100%');
   });
 };
 
-
+//Give New Location button a function so user can start over
+$(".newlocation-btn").click(function() {
+  $("#map-content").css('height', '100%');
+  $("#map-content").css('visibility', 'visible');
+  $("#crime-content").empty();
+  $("#crime-container").css('visibility', 'hidden');
+  $("#crime-container").css('height', '0px');
+});
 
 // going to have to create some type of if then statement
 // that will filter wether the user is trying to search or 
@@ -118,6 +120,7 @@ function initMap() {
 
 
 $(".locate-btn").click(function() {
+  
   var startPos;
   var nudge = document.getElementById("nudge");
 
@@ -291,4 +294,4 @@ the score and the recent crimes in the area */
 //want map to be zoomed out to a world view when page opens up 
 //want our rating to be cleared out on load 
 
-//locate me button onclick loads up to google map api location finder
+//locate me button onclick loads up to google map api location finde
