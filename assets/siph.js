@@ -7,29 +7,31 @@ var config = {
  storageBucket: "siph-1494544739001.appspot.com",
  messagingSenderId: "524514555118"
 };
- firebase.initializeApp(config);
+firebase.initializeApp(config);
+
 var baseUrl = "https://api.spotcrime.com/crimes.json?lat=39.9525838&lon=-75.165222&radius=0.08&callback=jQuery21306930704791620661_1494546905160&key=privatekeyforspotcrimepublicusers-commercialuse-877.410.1607&_=1494546905164"
-function runQuery(){
-  $.ajax({
-    url: baseUrl,
-    method: "GET",
-    dataType:'jsonp'
-  }).done(function(crimeStats) {
+// this variable is used by renderCrimeList
+var crimes = [];
+
+function renderCrimeList(crimes) {
     $("#map-content").css('height', '0px');
     $("#map-content").css('visibility', 'hidden');
     $("#map-content").css('overflow', 'hidden');
     $("#crime-content").html('<h2 class="lrg-center-text">Top Five Crimes in Area</h2>');
     //Loop through type of crimes so the first five are displayed in Lightbox div after Submit button clicked
     for(var i=0; i<5;i++){
-        var crimeType = crimeStats.crimes[i].type;
-        var crimeAddress = crimeStats.crimes[i].address;
-        console.log("Crime Type: " + crimeType + " " + "Crime Address: " + crimeAddress);
-        $("#crime-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
+		var crime = crimes[i];
+		if (crime) {
+			var crimeType = crimes.type;
+			var crimeAddress = crime.address;
+			console.log("Crime Type: " + crimeType + " " + "Crime Address: " + crimeAddress);
+			$("#crime-content").append('<p> Crime: ' + crimeType + "; " + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
+		}
     }
-        $("#crime-container").css('visibility', 'visible');
-        $("#crime-container").css('height', '100%');
-  });
-};
+    $("#crime-container").css('visibility', 'visible');
+    $("#crime-container").css('height', '100%');
+}
+
 //Give New Location button a function so user can start over
 $(".newlocation-btn").click(function() {
   $("#map-content").css('height', '100%');
@@ -38,17 +40,24 @@ $(".newlocation-btn").click(function() {
   $("#crime-container").css('visibility', 'hidden');
   $("#crime-container").css('height', '0px');
 });
+
 function closeLightbox(){
-  $(".lightbox").css('visibility', 'hidden');
-  $(".lightbox-content").css('visibility', 'hidden');
-  }
-  $(".lightbox").delay(200).fadeIn(1000);
-  $( ".lightbox-btn" ).click(function() {
-    closeLightbox();
-  });
-  $(".locate-btn" ).click(function() {
-    runQuery();
+	console.log("I am closing a light box.");
+	$(".lightbox").css('visibility', 'hidden');
+	$(".lightbox-content").css('visibility', 'hidden');
+}
+
+
+$(".lightbox").delay(200).fadeIn(1000);
+$( ".lightbox-btn" ).click(function() {
+	closeLightbox();
 });
+
+$(".locate-btn" ).click(function() {
+  // crimes array shouldbe full from calling getCrimes
+	renderCrimeList(crimes);
+});
+
 function getCrimes (lat, lng){
   var baseUrl = "https://api.spotcrime.com/crimes.json?lat=" + lat + "&lon="+ lng +"&radius=0.08&callback=jQuery21306930704791620661_1494546905160&key=privatekeyforspotcrimepublicusers-commercialuse-877.410.1607&_=1494546905164"
   $.ajax({
@@ -56,7 +65,11 @@ function getCrimes (lat, lng){
     method: "GET",
     dataType:'jsonp'
   }).done(function(crimeStats) {
-      // crimes = crimeStats.crimes;
+	  // renderCrimeList will be clicked later
+	  // so we need the list of crimes available
+	  // when it's clicked
+      crimes = crimeStats.crimes;
+	  
       addCrimesToMap(crimeStats.crimes);
   });
 }
