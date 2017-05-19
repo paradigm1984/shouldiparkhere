@@ -80,7 +80,7 @@ function addCrimesToMap(crimes) {
     marker.addListener('mouseover',function(){
         infowindow.open(map, marker);
     });
-    
+
     marker.addListener('click', function(){
         infowindow.close(map, marker);
     });
@@ -91,7 +91,7 @@ var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 13
+          zoom: 6
       });
         infoWindow = new google.maps.InfoWindow;
         // Try HTML5 geolocation.
