@@ -87,13 +87,13 @@ function addCrimesToMap(crimes) {
    
   });
 }
-var map, infoWindow;
+var map, marker;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          zoom: 11
       });
-        infoWindow = new google.maps.InfoWindow;
+        
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -101,9 +101,17 @@ var map, infoWindow;
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
+            marker = new google.maps.Marker({
+              position:pos,
+              map:map,
+              title:"Location Found",
+              icon:"assets/images/pin2.png",
+              zIndex:1,
+
+            });
+            /*marker.setPosition(pos);
+            marker.setContent('Location found.');
+            marker.open(map);*/
             map.setCenter(pos);
             getCrimes(pos.lat, pos.lng);
           }, function() {
@@ -121,4 +129,3 @@ var map, infoWindow;
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
- 
