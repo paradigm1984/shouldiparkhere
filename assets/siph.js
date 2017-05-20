@@ -86,12 +86,15 @@ function calculateScore(crimes) {
   // to generate word
   if(points < 15) {
     $("#scoreRating").text("SAFE")
-  } else if (points < 15 && points > 30) {
+  } else if (points > 15 && points < 30) {
+    $("#scoreRating").text("PRETTY SAFE")
+    } else if (points > 30 && points < 45) {
     $("#scoreRating").text("MODERATE")
+  } else if (points > 45 && points < 60) {
+    $("#scoreRating").text("SOMEWHAT RISKY")
   } else {
     $("#scoreRating").text("RISKY")
   };
-
   // input value into the html
   $("#scoreValue").text(points);
   // console.log("points " + points);
