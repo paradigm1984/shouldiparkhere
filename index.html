@@ -17,7 +17,6 @@
 
 	<body id="bod">
 	
-		
 
 		<div class="container body-container">
 			<div class="stripe">
@@ -28,11 +27,11 @@
 			
 			<div id="map-content">
 				<div class="map-container" id="map">
-					<input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
 
 						<!-- MAP STUFF WILL GO HERE -->
 						<!-- <img class="temp-img" src="assets/images/maps-screenshot.png"> -->
-				</div><!-- END "map-container container" -->
+				</div>
+				<!-- END "map-container container" -->
 				<!-- This is for the button -->
 				<div class="container">
 					<h2 class="lrg-center-text"> Press the button below to find your location! </h2>
@@ -42,6 +41,11 @@
 					</div>
 				</div><!-- END "container"-->
 			</div>
+
+			<div id = "dialog-3"
+         title = "How is this data aquired?">Any crime publically reported by a local police department is gathered and shown on the map!</div>
+      <button id = "opener-3">Source of these Crimes?</button>
+
 			<div id="crime-container" class="col-xs-12" style="height:0px;visibility:hidden;">
 				<div>
 					<img class="your-score-img" src="assets/images/ourratingfull.png">
@@ -62,8 +66,9 @@
 		</div>
 		<div class="lightbox">
 			<div class="lightbox-content">
-				<h1>Please allow location before you start!</h1>
-				
+				<div class="stripe">
+					<img class="title-img" src="assets/images/should-i-park-here-title-light.png">
+				</div><!-- END "light-stripe" -->
 				<button class="lightbox-btn">Get Started!</button>
 			</div>
 		</div>
@@ -80,6 +85,11 @@
 		<script src="http://code.jquery.com/jquery-2.2.4.min.js" 
 		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 		crossorigin="anonymous"></script>
+
+		<script
+  		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  		crossorigin="anonymous"></script>
 		
 		<!-- Firebase -->
 		<script src="http://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>

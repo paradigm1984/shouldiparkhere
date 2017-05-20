@@ -90,6 +90,10 @@ div.map-container {
 	border-radius: 17px;
 }
 
+#resize {
+	padding:5px;
+}
+
 /* to make the map make it bigger */ 
 div.map-container.fullscreen {
 	z-index: 9999; 
@@ -240,4 +244,15 @@ p{
 	font-family: helvetica;
 	color:white;
 	padding-top:15px;	
+}
+
+.ui-widget-header,.ui-state-default,.ui-dialog-content, ui-button {
+            background:#89023E;
+            border: 1px solid black;
+            color: white;
+            font-weight: bold;
+            font:white;
+        }
+.ui-button-icon-only {
+	color: black;
 }

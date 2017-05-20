@@ -1,3 +1,18 @@
+$( function() {
+    $( "#dialog-3" ).dialog({
+               autoOpen: false, 
+               hide: "puff",
+               show : "slide",
+               height: 200      
+            });
+            $( "#opener-3" ).click(function() {
+               $( "#dialog-3" ).dialog( "open" );
+            });
+            $("#dialog-3").dialog('option', 'position', [position.top, position.left]);
+         });
+
+
+
 // Initialize Firebase
 var config = {
  apiKey: "AIzaSyDSqVrrCzIDY3FydRzWwBVrTwFAXHo0imU",
@@ -30,6 +45,7 @@ function runQuery(){
         $("#crime-container").css('height', '100%');
   });
 };
+
 //Give New Location button a function so user can start over
 $(".newlocation-btn").click(function() {
   $("#map-content").css('height', '100%');
@@ -81,7 +97,7 @@ function addCrimesToMap(crimes) {
         infowindow.open(map, marker);
     });
 
-    marker.addListener('click', function(){
+    marker.addListener('mouseout', function(){
         infowindow.close(map, marker);
     });
    
@@ -129,3 +145,6 @@ var map, marker;
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+
+
+      
