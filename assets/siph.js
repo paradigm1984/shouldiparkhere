@@ -40,28 +40,83 @@ function getCrimes (lat, lng){
 	  // so we need the list of crimes available
 	  // when it's clicked
       crimes = crimeStats.crimes;
+      calculateScore(crimeStats.crimes)
 	  
       addCrimesToMap(crimeStats.crimes);
   });
 }
+// ========================================= //
+
+function calculateScore(crimes) {
+
+  // incase there are no crimes
+  if (!(crimes && crimes.length)) {
+      return console.log('No crimes.');
+  }
+
+  var points = 0;
+
+  // a rudemantary point system based on type of crime
+  crimes.forEach(function(crime, index){
+    console.log("Crime " + index, crime, "points " + points);
+    switch(crime.type.toLowerCase()) {
+      case "other":
+        points += 1
+        break;
+      case "vandalism":
+        points += 2;
+        break;
+      case "theft":
+        points += 4;
+        break;
+      case "robbery":
+        points += 6;
+        break;
+      case "burglary":
+        points += 9;
+        break;
+      case "assault":
+        points+= 12;  
+        break;
+      default:
+        break;  
+    }
+  });   
+
+  // to generate word
+  if(points < 15) {
+    $("#scoreRating").text("SAFE")
+  } else if (points < 15 && points > 30) {
+    $("#scoreRating").text("MODERATE")
+  } else {
+    $("#scoreRating").text("RISKY")
+  };
+
+  // input value into the html
+  $("#scoreValue").text(points);
+  // console.log("points " + points);
+}
+
+
+// ========================================= //
+
 
 function renderCrimeList(crimes) {
     $("#map-content").css('height', '0px');
     $("#map-content").css('visibility', 'hidden');
     $("#map-content").css('overflow', 'hidden');
-    $("#crime-content").html('<h2 class="lrg-center-text">Top Five Crimes in Area</h2>');
+    $("#crime-content").html('<h2 class="lrg-center-text">Top Crimes in Area</h2>');
     //Loop through type of crimes so the first five are displayed in Lightbox div after Submit button clicked
     for(var i=0; i<5;i++){
 		var crime = crimes[i];
-		if (crime) {
-			var crimeType = crime.type;
-			var crimeAddress = crime.address;
-			console.log("Crime Type: " + crimes.type + " " + "Crime Address: " + crimeAddress);
-			$("#crime-content").append('<p> Crime: ' + crimeType + '; ' + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
-		}
+  		if (crime) {
+  			var crimeType = crime.type;
+  			var crimeAddress = crime.address;
+  			console.log("Crime Type: " + crimes.type + " " + "Crime Address: " + crimeAddress);
+  			$("#crime-content").append('<p class="crime-type"> Crime: ' + crimeType + '; ' + 'Crime Address: ' + crimeAddress + '<br></br>' + '</p>');
+  		}
     }
 
-	
     $("#crime-container").css('visibility', 'visible');
     $("#crime-container").css('height', '100%');
 }
@@ -89,6 +144,7 @@ $( ".lightbox-btn" ).click(function() {
 $(".locate-btn" ).click(function() {
   // crimes array shouldbe full from calling getCrimes
 	renderCrimeList(crimes);
+
 });
 
 function addCrimesToMap(crimes) {
