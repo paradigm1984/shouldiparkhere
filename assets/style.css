@@ -229,6 +229,21 @@ img.your-score-img {
 	margin: auto;
 }
 
+.newlocation-btn{
+	position: relative;
+	color: #FFFDF2;
+	padding: 0;
+	background-color: #89023E;
+	border-radius: 8px;
+	width: 200px;
+	height: 100px;
+	max-width: 1200px;
+	font-family: helvetica;
+	font-size: 2vw;
+	z-index:1;
+	margin: 0% 10% 0% 10%;
+}
+
 h1{
 	font-family: helvetica;
 	font-weight: bold;
