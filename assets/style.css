@@ -222,11 +222,9 @@ img.your-score-img {
 .lightbox-btn {
 	position: relative;
 	color: #FFFDF2;
-	padding: 0;
+	padding: 10px;
 	background-color: #89023E;
 	border-radius: 8px;
-	width: 200px;
-	height: 100px;
 	max-width: 1200px;
 	font-family: helvetica;
 	font-size: 2vw;
